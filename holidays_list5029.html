@@ -1,0 +1,2339 @@
+
+<!DOCTYPE HTML>
+<html>
+
+
+<!-- Mirrored from remtsoy.com/tf_templates/traveler/demo_v1_7/flights.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Sep 2016 16:51:49 GMT -->
+
+<!-- Mirrored from wintrip.in/holidays_list?pack-destination-city=Goa%2CGoa&check-in=03%2F22%2F2017&check-out= by HTTrack Website Copier/3.x [XR&CO'2010], Wed, 08 Mar 2017 08:42:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+    <title>Indian Largest Travel and Utility Porvinding Portal </title>
+
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="Template, html, premium, themeforest" />
+    <meta name="description" content="Traveler - Premium template for travel companies">
+    <meta name="author" content="Tsoy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- GOOGLE FONTS -->
+   <!-- /GOOGLE FONTS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/styles-2.css">
+    <link rel="stylesheet" href="css/mystyles.css">
+        <link rel="stylesheet" href="css/book_form.css">
+
+    <script src="js/modernizr.js"></script>
+
+    <link rel="stylesheet" href="css/switcher.css" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/bright-turquoise.css" title="bright-turquoise" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/turkish-rose.css" title="turkish-rose" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/salem.css" title="salem" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/hippie-blue.css" title="hippie-blue" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/mandy.css" title="mandy" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/green-smoke.css" title="green-smoke" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/horizon.css" title="horizon" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/cerise.css" title="cerise" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/brick-red.css" title="brick-red" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/de-york.css" title="de-york" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/shamrock.css" title="shamrock" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/studio.css" title="studio" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/leather.css" title="leather" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/denim.css" title="denim" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/scarlet.css" title="scarlet" media="all" />
+</head>
+
+    <script src="js/google.js"></script>
+
+
+    
+
+    <script>
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#from").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#from").val(ui.item.value);
+						//$("#searchForm").submit();
+						//document.getElementById('from').innerHTML=+'badsddsf';
+					}
+			});
+		}
+	});
+	
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#to").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#to").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>
+<script type="text/javascript">		
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight_int.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight_int").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				
+				text ='<i class="fa fa-bed"></i>';
+				
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#from_location_international_flight").autocomplete({
+					source: myArr,
+					minLength: 2,
+					
+					select: function(event, ui) {
+						$("input#from_location_international_flight").val(ui.item.value)
+						
+						//$("input#from_location_international_flight").in
+						
+						document.getElementById('from_location_international_flight').innerHTML='<i class="fa fa-bed"></i>';
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight_int.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight_int").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#to_location_international_flight").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#to_location_international_flight").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+</script>
+
+<script>
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "INTL_City_details.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("CityName").each(function()
+			{
+				
+				//myArr.push($(this).attr("label"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#from_hotel_int").autocomplete({
+					source: myArr,
+					minLength: 2,
+					
+					select: function(event, ui) {
+						$("input#from_hotel_int").val(ui.item.value);
+						//$("#international_form").submit();
+					}
+			});
+		}
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "dom_hotel.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC_dom,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("domhotel").each(function()
+			{
+				
+				//myArr.push($(this).attr("label"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC_dom() {
+			$("input#from_hotel").autocomplete({
+					source: myArr,
+					minLength: 2,
+					
+					select: function(event, ui) {
+						$("input#from_hotel").val(ui.item.value);
+						//$("#international_form").submit();
+						
+						//var gif ='http://www.ticketshop-thueringen.de/Ticketshop-theme/images/dummy/loading_150.gif';
+						
+						
+                      //$("input#from_hotel").css( "background-image", "url(" +ui.item.gif + ")" );
+					}
+			});
+		}
+	});
+</script>
+
+<script>
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "bus_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("bus").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#bus_from").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#bus_from").val(ui.item.value);
+						//$("#searchForm").submit();
+						//document.getElementById('from').innerHTML=+'badsddsf';
+					}
+			});
+		}
+	});
+	
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "bus_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("bus").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#bus_to").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#bus_to").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>
+
+
+
+
+
+
+<script>
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_new_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("car").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#car_from").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#car_from").val(ui.item.value);
+						//$("#searchForm").submit();
+						//document.getElementById('from').innerHTML=+'badsddsf';
+					}
+			});
+		}
+	});
+	
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_new_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("car").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#car_to").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#car_to").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_cities.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("car").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#city_id").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#city_id").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "holiday_dom_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("dom_holiday").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#domestic_holiday_city").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#domestic_holiday_city").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">		
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_cities.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC2,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("name").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC2() {
+			$("input#from_location_holiday").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#from_location_holiday").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>  
+
+<script type="text/javascript">		
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_int_cities.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC2,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("name").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC2() {
+			$("input#from_location_holiday_int").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#from_location_holiday_int").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>    
+
+
+<body class="full" onload="price_low_to_high();setDefaultBody(); ">
+
+    <!-- FACEBOOK WIDGET -->
+    <div id="fb-root"></div>
+   
+    <!-- /FACEBOOK WIDGET -->
+    <div class="global-wrap">
+        
+         
+<header id="main-header">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a class="logo" href="index-2.html">
+                                <img src="images/logo.png" style="width:200px;
+    height: 45px;" alt="Travel Logo" title="Logo" />
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-md-offset-2">
+                            
+                        </div>
+                        <div class="col-md-9">
+                            <div class="top-user-area clearfix">
+                                <ul class="top-user-area-list list list-horizontal list-border">
+                                
+                                                                    
+                                   
+                                                                         <li>
+                                <a href="register.html" title="Sign in">Sign Up</a>                                    
+                        
+                                                </li>                                     
+                        
+                        <li>
+                            <a href="login.html" title="Agent Login">Sign In</a>
+                        </li>
+                        
+                         <li>
+                            <a target="_blank" href="https://goalltrip.com/load_wallet" title="Agent Login">Load Wallet</a>
+                        </li>
+                        <li class="nav-drop"><a href="#">My Account<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+                            <ul class="list nav-drop-menu">   
+                            
+                             
+                                                                   
+                                <li onclick="location.href='print_ticket'" style="cursor:pointer"><a   title="Print Flight Ticket"><i class="fa fa-plane">&nbsp;</i> Print Ticket</a></li>                                            
+                                <li onclick="location.href='cancel_ticket'" style="cursor:pointer"><a  title="Cancel Flight Ticket"><i class="fa fa-plane">&nbsp;</i> Cancel Ticket</a></li>                                                                                        
+                                <li onclick="location.href='print_bus_ticket'" style="cursor:pointer"><a  title="Print Bus Ticket"><i class="im im-bus">&nbsp;</i> Print Ticket</a></li>
+                                <li onclick="location.href='print_recharge'" style="cursor:pointer"><a   title="Print Recharge"><i class="fa fa-mobile">&nbsp;</i> Recharge Print</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </header>
+
+
+
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="index-2.html">Home</a>
+                </li>
+                <li><a href="#">India</a>
+                </li>
+                <li><a href="#">Goa</a>
+                </li>
+                </li>
+                <li class="active">Goa City Holidays</li>
+            </ul>
+            <div class="mfp-with-anim mfp-hide mfp-dialog mfp-search-dialog" id="search-dialog">
+                <h3>Search for Holidays</h3>
+                <form>
+                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon input-icon-highlight"></i>
+                        <label>Where are you going?</label>
+                        <input class="typeahead form-control" placeholder="City, Airport, Point of Interest, Holidays Name or U.S. Zip Code" type="text" />
+                    </div>
+                    <div class="input-daterange" data-date-format="M d, D">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
+                                    <label>Check-in</label>
+                                    <input class="form-control" name="start" type="text" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
+                                    <label>Check-out</label>
+                                    <input class="form-control" name="end" type="text" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group form-group-lg form-group-select-plus">
+                                    <label>Rooms</label>
+                                    <div class="btn-group btn-group-select-num" data-toggle="buttons">
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" name="options" />1</label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" />2</label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" />3</label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" />3+</label>
+                                    </div>
+                                    <select class="form-control hidden">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option selected="selected">4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group form-group-lg form-group-select-plus">
+                                    <label>Gutests</label>
+                                    <div class="btn-group btn-group-select-num" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" />1</label>
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" name="options" />2</label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" />3</label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" />3+</label>
+                                    </div>
+                                    <select class="form-control hidden">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option selected="selected">4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg" type="submit">Search for Holidayss</button>
+                </form>
+            </div>
+            <h4 class="booking-title"> Holidayss in  <small><a class="popup-text" href="#search-dialog" data-effect="mfp-zoom-out">Change search</a></small></h4>
+            <div class="row">
+                <div class="col-md-3">
+                    <aside class="booking-filters booking-filters-white">
+                        <h3>Filter By:</h3>
+                        <ul class="list booking-filters-list">
+                            <li>
+                                <h5 class="booking-filters-title">Price</h5>
+                                <input type="text" id="price-slider">
+                            </li>
+                            <li>
+                                <h5 class="booking-filters-title">Star Rating</h5>
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="i-check" type="checkbox" />5 star (220)</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="i-check" type="checkbox" />4 star (112)</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="i-check" type="checkbox" />3 star (75)</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="i-check" type="checkbox" />2 star (60)</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="i-check" type="checkbox" />1 star (20)</label>
+                                </div>
+                            </li>
+                            
+                            
+                            
+                        </ul>
+                    </aside>
+                </div>
+                <div class="col-md-9">
+                    <div class="nav-drop booking-sort">
+                        <h5 class="booking-sort-title"><a href="#">Sort: Aviability<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a></h5>
+                        <ul class="nav-drop-menu">
+                            <li><a href="#">Price (low to high)</a>
+                            </li>
+                            <li><a href="#">Price (hight to low)</a>
+                            </li>
+                            <li><a href="#">Ranking</a>
+                            </li>
+                            <li><a href="#">Distance</a>
+                            </li>
+                            <li><a href="#">Number of Reviews</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    
+                    <ul class="booking-list"  id="onwardtrip_ul">
+                     
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail7acb.html?package_id=160&amp;title=Belle Wista Wado  Enviro Green Resort">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Belle Wista Wado  Enviro Green Resort" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Belle Wista Wado  Enviro Green Resort" style="font-weight:bold">Belle Wista Wado  Enviro Green Resort</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">8599 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 8599">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail4493.html?package_id=161&amp;title=Veronica Guest House">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Veronica Guest House" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Veronica Guest House" style="font-weight:bold">Veronica Guest House</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">7500 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 7500">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail742a.html?package_id=170&amp;title=Valentines Retreat 3 Nights">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Valentines Retreat 3 Nights" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Valentines Retreat 3 Nights" style="font-weight:bold">Valentines Retreat 3 Nights</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">8499 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 8499">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail66e3.html?package_id=158&amp;title=Enjoy North Goa  South Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Enjoy North Goa  South Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Enjoy North Goa  South Goa" style="font-weight:bold">Enjoy North Goa  South Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">5999 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 5999">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail6f21.html?package_id=163&amp;title=North Goa  Famous Dudhsagar Waterfall">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="North Goa  Famous Dudhsagar Waterfall " title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="North Goa  Famous Dudhsagar Waterfall " style="font-weight:bold">North Goa  Famous Dudhsagar Waterfall </h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">5999 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 5999">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail1419.html?package_id=172&amp;title=North Goa  Dudhsagar Waterfall  South Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="North Goa  Dudhsagar Waterfall  South Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="North Goa  Dudhsagar Waterfall  South Goa" style="font-weight:bold">North Goa  Dudhsagar Waterfall  South Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">7000 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 7000">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail8ab9.html?package_id=175&amp;title=Dudhsagar Waterfall North Goa With Flight">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Dudhsagar Waterfall North Goa With Flight " title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Dudhsagar Waterfall North Goa With Flight " style="font-weight:bold">Dudhsagar Waterfall North Goa With Flight </h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">8499 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 8499">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail1566.html?package_id=201&amp;title=Alore Holiday Beach Resort">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Alore Holiday Beach Resort" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Alore Holiday Beach Resort" style="font-weight:bold">Alore Holiday Beach Resort</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">7781 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 7781">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail5668.html?package_id=210&amp;title=Shivam Resort North Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Shivam Resort North Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Shivam Resort North Goa" style="font-weight:bold">Shivam Resort North Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">7588 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 7588">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail623b.html?package_id=211&amp;title=Goviea Holiday Homes North Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Goviea Holiday Homes North Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Goviea Holiday Homes North Goa" style="font-weight:bold">Goviea Holiday Homes North Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">7681 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 7681">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail4b63.html?package_id=212&amp;title=Resort De Crossroads North Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Resort De Crossroads North Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Resort De Crossroads North Goa" style="font-weight:bold">Resort De Crossroads North Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">7954 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 7954">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail15bc.html?package_id=187&amp;title=The Crown Goa Panjim">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="The Crown Goa Panjim" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="The Crown Goa Panjim" style="font-weight:bold">The Crown Goa Panjim</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">7588 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 7588">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail8929.html?package_id=188&amp;title=Majorda Beach Resort Package">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Majorda Beach Resort Package" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Majorda Beach Resort Package" style="font-weight:bold">Majorda Beach Resort Package</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">17104 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 17104">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail815d.html?package_id=198&amp;title=Rahi Coral Beach Resort North Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Rahi Coral Beach Resort North Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Rahi Coral Beach Resort North Goa" style="font-weight:bold">Rahi Coral Beach Resort North Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">6124 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 6124">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail59b5.html?package_id=199&amp;title=Palmarinha Resort  Suites North Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Palmarinha Resort  Suites North Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Palmarinha Resort  Suites North Goa" style="font-weight:bold">Palmarinha Resort  Suites North Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">7499 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 7499">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detaila72b.html?package_id=200&amp;title=Santana Beach Resorts North Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Santana Beach Resorts North Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Santana Beach Resorts North Goa" style="font-weight:bold">Santana Beach Resorts North Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">8999 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 8999">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail9b7d.html?package_id=205&amp;title=Alor Grande Holiday Resort North Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Alor Grande Holiday Resort North Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Alor Grande Holiday Resort North Goa" style="font-weight:bold">Alor Grande Holiday Resort North Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">7999 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 7999">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail4ef6.html?package_id=202&amp;title=2016 Goa Departures With Air Ex Mumbai 4 Days">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="2016 Goa Departures With Air Ex Mumbai 4 Days" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="2016 Goa Departures With Air Ex Mumbai 4 Days" style="font-weight:bold">2016 Goa Departures With Air Ex Mumbai 4 Days</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">8999 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 8999">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail61d1.html?package_id=206&amp;title=Meraden Opus North Goa 4 Days">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Meraden Opus North Goa 4 Days" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Meraden Opus North Goa 4 Days" style="font-weight:bold">Meraden Opus North Goa 4 Days</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">12370 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 12370">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detailc129.html?package_id=207&amp;title=Whispering Palms Beach Resorts North Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Whispering Palms Beach Resorts North Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Whispering Palms Beach Resorts North Goa" style="font-weight:bold">Whispering Palms Beach Resorts North Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">15476 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 15476">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detailb269.html?package_id=208&amp;title=Via Goa Departures With Air Ex Delhi">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Via Goa Departures With Air Ex Delhi" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Via Goa Departures With Air Ex Delhi" style="font-weight:bold">Via Goa Departures With Air Ex Delhi</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">17499 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 17499">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detailc661.html?package_id=209&amp;title=Krish Holiday Inn North Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Krish Holiday Inn North Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Krish Holiday Inn North Goa" style="font-weight:bold">Krish Holiday Inn North Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">6938 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 6938">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detaila704.html?package_id=313&amp;title=Phoenix Park Inn Resort">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Phoenix Park Inn Resort" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Phoenix Park Inn Resort" style="font-weight:bold">Phoenix Park Inn Resort</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">12591 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 12591">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detailbe52.html?package_id=314&amp;title=Holiday Inn Resort Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Holiday Inn Resort Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Holiday Inn Resort Goa" style="font-weight:bold">Holiday Inn Resort Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">22320 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 22320">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detailf241.html?package_id=315&amp;title=Planet Hollywood Beach Resort Goa">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Planet Hollywood Beach Resort Goa" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Planet Hollywood Beach Resort Goa" style="font-weight:bold">Planet Hollywood Beach Resort Goa</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">22011 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 22011">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail0109.html?package_id=321&amp;title=So My Resort">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="So My Resort" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="So My Resort" style="font-weight:bold">So My Resort</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">0 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 0">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                 
+                    
+              <li>
+              <a class="booking-item" href="holidays_detail85c0.html?package_id=186&amp;title=Banyan Tree Courtyard North Goa 4 Days">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://www.goalltrip.com/403.php" alt="Image Alternative text" height="150px" rel="tooltip" data-placement="top" title="" data-original-title="Banyan Tree Courtyard North Goa 4 Days" title="The pool">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title" rel="tooltip" data-placement="top" title="" data-original-title="Banyan Tree Courtyard North Goa 4 Days" style="font-weight:bold">Banyan Tree Courtyard North Goa 4 Days</h5>
+                                            <p class="text-small">Goa,Goa</p>
+                                            <ul class="booking-item-features booking-item-features-sign clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">730</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="booking-item-features booking-item-features-small clearfix">
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Air Conditioning"><i class="im im-air"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Bathtub"><i class="im im-bathtub"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Kitchen"><i class="im im-kitchen"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Patio"><i class="im im-patio"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="SPA tub"><i class="im im-spa"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Washing Machine"><i class="im im-washing-machine"></i>
+                                                </li>
+                                                <li rel="tooltip" data-placement="top" title="" data-original-title="Pool"><i class="im im-pool"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3"><span class="booking-item-price onward_fare"  id="onwardprice_1" style="font-size:28px; font-weight:bold">4416 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="btn btn-success" rel="tooltip" data-placement="top" title="" data-original-title="R.s 4416">Book</span>
+                                    
+
+                                            
+                                            
+                                    </div>
+                                    </div>
+                                </a>
+              
+              
+              </li>
+                    
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                    <div class="row">
+                        <div class="col-md-6">
+                            
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <p>Not what you're looking for? <a class="popup-text" href="#search-dialog" data-effect="mfp-zoom-out">Try your search again</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gap"></div>
+        </div>
+
+
+
+          
+ <footer id="main-footer">
+            <div class="container">
+                <div class="row row-wrap">
+                    <div class="col-md-3">
+                        <a class="logo" href="index-2.html">
+                            <img src="images/logo.png" style="width: 190px;
+    height: 45px;" alt="wintrip.in" title="wintrip.in" />
+                        </a>
+                       
+                        <ul class="list list-horizontal list-space">
+                            <li>
+                                <a target="_blank" class="fa fa-facebook box-icon-normal round animate-icon-bottom-to-top" href="https://www.facebook.com/suvogoalltrip"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" class="fa fa-twitter box-icon-normal round animate-icon-bottom-to-top" href="https://twitter.com/goalltrip_com"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" class="fa fa-google-plus box-icon-normal round animate-icon-bottom-to-top" href="https://twitter.com/goalltrip_com"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-linkedin box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" class="fa fa-youtube box-icon-normal round animate-icon-bottom-to-top" href="https://youtu.be/_nDfWXMJWdI"></a>
+                            </li>
+                        </ul>
+                        
+                       
+                        
+                        <p>Copyright © 2016 Wintrip tours and holidays All Rights Reserved.</p>
+                       
+                        
+                        
+                    </div>
+                    
+                    <style>
+					
+					.list-footer > li{
+						
+						font-weight:bold;
+						font-size:12px;
+						
+					}
+					
+					
+					</style>
+                    <div class="col-md-2">
+                    <h4 style="color: #F60">Wintrip Info</h4>
+
+                        <ul class="list list-footer">
+                           <li><a   href="about.html">About Us</a></li>
+                  <li><a  href="#">Board Of Directors</a></li>
+                
+                                    
+         <li><a  href="about-2.html">Our Team</a></li>
+             <li><a   href="contact.html">Contact us</a></li>
+                
+                        </ul>
+                    </div>
+                    
+                    
+                    
+
+                    <div class="col-md-2">
+                    <h4 style="color: #F60">Partner </h4>
+                        <ul class="list list-footer">
+                           <li><a  href="register.html">Become an Agent</a></li>
+  <li><a  href="franchise.html">Franchise</a></li>
+  			
+                <li><a   href="faq.html">Faq</a></li>
+             
+                        </ul>
+                    </div>
+                    
+                    
+                    <div class="col-md-2">
+                    <h4 style="color: #F60">Legal</h4>
+
+                        <ul class="list list-footer">
+                          <li><a   href="privacy.html">Privacy Policy</a></li>
+   <li><a   href="terms.html">Terms & Conditions</a></li>
+ <li><a   href="terms.html">Legal Data</a></li>
+ <li><a  href="user_agreement.html">User Agreement</a></li>
+			
+                            
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Wintrip tours and holidays</h4>
+                        <h4  style="color:#F60">+91 8111892447</h4>
+                        <h4 style="color:#F60">info@wintrip.in</h4>
+                        <p style="font-weight:bold">24/7 Dedicated Customer Support</p>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+         <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/slimmenu.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/bootstrap-timepicker.js"></script>
+        <script src="js/nicescroll.js"></script>
+        <script src="js/dropit.js"></script>
+        <script src="js/ionrangeslider.js"></script>
+        <script src="js/icheck.js"></script>
+        <script src="js/fotorama.js"></script>
+        
+        
+        <script src="js/typeahead.js"></script>
+        <script src="js/card-payment.js"></script>
+        <script src="js/magnific.js"></script>
+        <script src="js/owl-carousel.js"></script>
+        <script src="js/fitvids.js"></script>
+        <script src="js/tweet.js"></script>
+        <script src="js/countdown.js"></script>
+        <script src="js/gridrotator.js"></script>
+        <script src="js/custom.js"></script>
+        
+        
+        <script src="js/switcher.js"></script>
+        
+         <script src="assets/js/jquery-ui.min.js"></script>
+
+        
+        
+         </div>
+</body>
+
+
+
+
+<!-- Mirrored from wintrip.in/holidays_list?pack-destination-city=Goa%2CGoa&check-in=03%2F22%2F2017&check-out= by HTTrack Website Copier/3.x [XR&CO'2010], Wed, 08 Mar 2017 08:44:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>		
+         <!--<script src="js/user_js_one.js"></script>-->

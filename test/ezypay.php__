@@ -1,0 +1,23 @@
+<?php
+include('../config.php');
+define("BROWSE", "browse");
+//
+$account = isset($_GET['mobile']) && $_GET['mobile']!='' ? mysql_real_escape_string($_GET['mobile']) : '0';
+$request_txn_no = time();
+$ezpmsg = "msg=E06009~E1hgYt898557843789~Abc589654123~7699999821~Jai Kumar~1234567890~UTIB0000436~NA~NA";
+$url = 'http://180.179.20.116/RemitMoney/mtransfer';
+//$url = "http://180.179.20.116:8030";
+
+
+
+
+$opts = array('http' =>
+	array(
+		'method'  => 'POST',
+		'header'  => 'Content-type: application/x-www-form-urlencoded',
+		'content' => $ezpmsg
+	)
+);
+$context  = stream_context_create($opts);
+$result = file_get_contents('http://google.com/', false, $context);
+print_r($result);

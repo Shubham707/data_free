@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from travel.bdtask.com/travel_demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Feb 2017 15:09:57 GMT -->
+
+<!-- Mirrored from SwipeCell.in/aboutus by HTTrack Website Copier/3.x [XR&CO'2010], Wed, 08 Mar 2017 08:40:29 GMT -->
+<!-- Added by HTTrack --><!-- /Added by HTTrack -->
+<head><meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Welcome To SwipeCell</title>
+        <!-- Favicons -->
+        <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+        <link rel="apple-touch-icon" type="image/x-icon" href="assets/images/apple-touch-icon-57x57-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114-precomposed.png">
+        <!-- Base Css -->
+        <link href="assets/css/base.css" rel="stylesheet" type="text/css"/>
+        
+         <link href="assets/css/autocom.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!-- page loader -->
+        <div class="se-pre-con"></div>
+        <div id="page-content">
+            <!-- navber -->
+            <nav id="mainNav" class="navbar navbar-fixed-top">
+                <div class="container">
+                    <!--Brand and toggle get grouped for better mobile display--> 
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span><i class="glyphicon glyphicon-list"></i>
+                        </button>
+                        <a class="navbar-brand" href="index-2.html">
+                            <img src="assets/images/logo.png" class="img-resposive" alt="">
+                        </a>
+                    </div>
+                    <!--Collect the nav links, forms, and other content for toggling--> 
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="index-2.html">Home</a></li>
+                            <li><a href="aboutus.html">About Us</a></li>
+                            <li><a href="contactus.html">Contact Us</a></li>
+                            <li class=""><a href="utility_all.html">Recharges</a></li>
+                            
+                            <li class=""><a href="utility_all.html">BillPayments</a></li>                         
+                           
+                            <li><a href="login.php">Money Transfer</a></li>
+                            
+                            
+                             <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">My Account <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a target="_blank" href="login.php">Sign in</a></li>
+                                    <li><a target="_blank" href="register.html">Sign up</a></li>
+                                    <li><a target="_blank" href="load_wallet.html">Load Wallet</a></li>
+                                    <li><a target="_blank" href="support.html">Support</a></li>
+                                    
+                                   
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right hidden-sm">
+                            <li><a class="nav-btn" href="contactus.html"><div class="thm-btn">Let's Talk! </div></a></li>
+                        </ul>
+                    </div> <!-- /.navbar-collapse --> 
+                </div> <!-- /.container --> 
+            </nav> 
+            
+            
+            <script src="js/google.js"></script>
+
+
+    
+
+    <script>
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#from").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#from").val(ui.item.value);
+						//$("#searchForm").submit();
+						//document.getElementById('from').innerHTML=+'badsddsf';
+					}
+			});
+		}
+	});
+	
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#to").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#to").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>
+<script type="text/javascript">		
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight_int.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight_int").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				
+				text ='<i class="fa fa-bed"></i>';
+				
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#from_location_international_flight").autocomplete({
+					source: myArr,
+					minLength: 2,
+					
+					select: function(event, ui) {
+						$("input#from_location_international_flight").val(ui.item.value)
+						
+						//$("input#from_location_international_flight").in
+						
+						document.getElementById('from_location_international_flight').innerHTML='<i class="fa fa-bed"></i>';
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight_int.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight_int").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#to_location_international_flight").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#to_location_international_flight").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+</script>
+
+<script>
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "INTL_City_details.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("CityName").each(function()
+			{
+				
+				//myArr.push($(this).attr("label"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#from_hotel_int").autocomplete({
+					source: myArr,
+					minLength: 2,
+					
+					select: function(event, ui) {
+						$("input#from_hotel_int").val(ui.item.value);
+						//$("#international_form").submit();
+					}
+			});
+		}
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "dom_hotel.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC_dom,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("domhotel").each(function()
+			{
+				
+				//myArr.push($(this).attr("label"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC_dom() {
+			$("input#from_hotel").autocomplete({
+					source: myArr,
+					minLength: 2,
+					
+					select: function(event, ui) {
+						$("input#from_hotel").val(ui.item.value);
+						//$("#international_form").submit();
+						
+						//var gif ='http://www.ticketshop-thueringen.de/Ticketshop-theme/images/dummy/loading_150.gif';
+						
+						
+                      //$("input#from_hotel").css( "background-image", "url(" +ui.item.gif + ")" );
+					}
+			});
+		}
+	});
+</script>
+
+<script>
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "bus_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("bus").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input.bus_from").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#bus_from").val(ui.item.value);
+						//$("#searchForm").submit();
+						//document.getElementById('from').innerHTML=+'badsddsf';
+					}
+			});
+		}
+	});
+	
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "bus_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("bus").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#bus_to").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#bus_to").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>
+
+
+
+
+
+
+<script>
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_new_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("car").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#car_from").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#car_from").val(ui.item.value);
+						//$("#searchForm").submit();
+						//document.getElementById('from').innerHTML=+'badsddsf';
+					}
+			});
+		}
+	});
+	
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_new_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("car").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#car_to").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#car_to").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_cities.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("car").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#city_id").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#city_id").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "holiday_dom_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("dom_holiday").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#domestic_holiday_city").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#domestic_holiday_city").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">		
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_cities.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC2,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("name").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC2() {
+			$("input#from_location_holiday").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#from_location_holiday").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>  
+
+<script type="text/javascript">		
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_int_cities.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC2,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("name").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC2() {
+			$("input#from_location_holiday_int").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#from_location_holiday_int").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>    
+
+
+            <section class="header header-bg-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="header-content">
+                                <div class="header-content-inner">
+                                    <h1>About Us</h1>
+                                    <p>"We are India's fastestgrowing Online Recharge Site for prepaid mobile recharge, DTH recharge & Data Card recharge and other day to day services.
+
+Get instant and easy online recharge for Airtel, Vodafone, Idea, BSNL, Aircel and several other telecom operators for all circles across India. Online DTH recharge for Tata Sky, Airtel Digital TV, Dish TV, Reliance Digital TV, Sun Direct & Videocon D2H.. </p>
+                                    <div class="ui breadcrumb">
+                                        <a href="index-2.html" class="section">Home</a>
+                                        <div class="divider">  </div>
+                                        <div class="active section"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- about section -->
+            <section class="about-section">
+                <!-- about section -->
+                <div class="about-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-8">
+                                <div class="section-title text-center">
+                                    <i class="flaticon-care-about-water"></i>
+                                    <h2>About Us</h2>
+                                    <p>“We at SWIPECELL are a unit of Energic Softech Solutions Pvt.Ltd. India’s
+leading payments solutions provider.Since 2014 we have been serving India
+through our business of service aggregation providing instant recharges,
+bill payments and travels solutions at over 50,000+ retail outlets.
+
+ With the SWIPECELL, we strive to bring to you the convenience of the same services and more to your mobile phones and desktops.
+
+ With the trust of 5 million users and committing a network of 1,500
+online and offline merchants and trade partners across the country, we
+are one of the most widely accepted mobile wallet in channel network in
+the country.
+
+With innovation supported by cutting edge technology, We continue to offer
+a plethora of services especially designed to meet every retailer’s
+payment needs. So be it mobile/DTH/Data card recharges, Bill payments,
+Instant money transfers you can do it all- safely, securely and
+seamlessly, using SWIPECELL.
+SWIPECELL is committed to transform the way you pay. Going forward, we
+will keep adding increasingly,innovative,customer-centric digital
+payment services which are convenient to access, adopt and use.
+                                                      So stay tuned!!!</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="about-title">
+                                    <h2>COMPANY PROFILE</h2>
+                                    <h3> One day, one jump and two years of passion</h3>
+
+                                    <p>" We are an enterprise company initially, with high aspirations and big
+dreams with expertise in the field of all softwares and started a humble
+journey in B2B industry from mid of 2017 with a small sales force with
+basic services. We have incorporated  ourselves as Pvt.Ltd.in March 2018
+as “Energic Softech Solutions Pvt.Ltd.”with our brand “SWIPECELL”.
+Currently we are visible in 12 states of Indian market, with this rapid
+growth we are expecting to cover max.25 states in the coming 4-5 months.
+</p>
+                                </div>
+                                <div class="middle-content">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                            <img src="assets/images/about.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="content-left">
+                                                <h4>Our Vision?</h4>
+                                                <p class="mission-description"> To be amongst the top 3 most Respected ,Trusted ,Cherished and valued Indian company in the multi recharge market by end of 2018 .. </p>
+<h4>Our Mission?</h4>
+                                                <p class="mission-description">
+                                                            . To work with vigour, dedication and innovation to achieve excellence in service, quality, reliability and safety .</p>
+
+</p>. To earn the trust and confidence of all stakeholders, exceeding their expectations and make the Company a respected household name.</p>
+</p>. To promote a work culture that fosters individual growth, team spirit and creativity to overcome challenges and attain goals.
+                                   </ul>
+                                                    </div>
+                                                </div>
+
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+</p>
+<div class="about-title">
+                                 
+<h2>We promise:</h2>
+
+
+
+.A totally satisfied you, who'll want to come back to us again and again</p>
+
+</p>
+.An easy and instant recharging process
+</p>.A hassle-free online experience
+.A safe and secure payment process
+</p>
+. Best discounts available in the market
+</p>
+.Happiness guaranteed .
+</p>
+. To uphold the guiding principles of trust, integrity and transparency in all aspects of interactions and dealings
+</p>
+. To earn the trust and confidence of all stakeholders, exceeding their expectations and make the Company a respected household name.
+                                <div class="about-title">
+                                    <h2>Our Services</h2>
+                                    <h3> Benefits our customer's Enjoy</h3>
+                                    <p>.Mobile Recharges <p>
+.Data Card Recharges
+<p>.DTH Recharge .
+<p>.Post Paid Bills.
+<p>.Electricity Bills.
+<p>.Water Bills.
+<p>.Money Transfer.
+<p>.Air tickets.
+<p>.Hotel bookings.
+<p>.Gas Bills.
+<p>.Insurance Premium.</p>
+<h2>Why SwipeCell:</h2>
+</p>
+<h3> Exciting future awaits for you at Swipe Cell !</h3>
+</p>
+Our Vision is based on a very simple principle: provide the world's best customer experience and complement it with highly motivated & inspired teams. Only this way we shall develop a stable business environment around us. We believe that miracles can be achieved only by happy faces. Both the development of our marketing channel and the growth of our employees happens to be our priority.
+</p>
+<h3> Our Work culture is defined by the 10 key doctrines.</h3>
+</p>
+        1	Fierce passion for excellence.
+</p>2	A "can do" mindset .
+</p>3	Never say die mantra.
+</p>4	Symbiotic growth.
+</p>5	Participative management.
+</p>6	Long term employment.
+</p>7	Equal opportunity irrespective of caste, creed, sex or race.
+</p>8	Zero tolerance for sexual harassment.  
+</p>
+Well defined quantitative approach to promotions and growth opportunities that have been defined into manuals. Yearlong need based and employee specific training and development programs. We offer challenging assignments and career opportunities to engineers, MBAs, IT specialists, profit centre heads as well as young professionals. We recognize and reward your merit Send us your resumes at hr@swipecell.in .                      </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- testimonial section --> 
+                
+                <!-- team member -->
+                
+                <!-- client -->
+                
+            </section>
+            <!-- Newsletter -->
+            <section class="get-offer">
+                
+            </section>
+        </div>
+
+        <!-- Footer Section -->
+               <footer>
+            <div class="container">
+                <div class="row">
+                    <!-- Address -->
+                    <div class="col-sm-4 col-md-3">
+                        <div class="footer-box address-inner">
+                            <p>SwipeCell is a one-stop online solution company features various services   </p>
+                            <div class="address">
+                                <i class="flaticon-placeholder"></i>
+ 
+                                <p>Energic Softech Solutions Pvt. Ltd<p>
+554/555,Tower B-2,spaze I-Tech Park, Sohna Road, Sector 49,
+GURGAON, HR-122018</p>
+                            </div>
+                            <div class="address">
+                                <i class="flaticon-customer-service"></i>
+                                <p> +91 124-4002005 / 4002006</p>
+                            </div>
+                            <div class="address">
+                                <i class="flaticon-mail"></i>
+                                <p> info@SwipeCell.in</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-md-6">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <div class="footer-box">
+                                    <h4 class="footer-title">About SwipeCell</h4>
+                                    <ul class="categoty">
+                                        <li><a href="aboutus.html">About Us</a></li>
+                                        <li><a href="aboutus.html">Why us</a></li>
+                                        <li><a href="aboutus.html">Company Profile</a></li>
+                                        <li><a href="aboutus.html">Our Team</a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="footer-box">
+                                    <h4 class="footer-title">Support</h4>
+                            <ul class="categoty">
+                                        <li><a href="contactus.html">Contact Us</a></li>
+                                        <li><a target="_blank" href="user_agreement.html">User Agreement</a></li>
+                                        <li><a href="contactus.html">Faq</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="footer-box">
+                                    
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 hidden-sm">
+                        <div class="footer-box">
+                            
+                                        
+                                    </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <p>Copyright ﾃつｩ 2014 SwipeCell.in All rights reserved</p>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="index-2.html">Home</a></li>
+                                    <li><a href="aboutus.html">About</a></li>
+                                    <li><a href="contactus.html">Contact</a></li>
+                                    <li><a href="register.html">Register</a></li>
+                                    <li><a href="login.php">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- jQuery -->
+        <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+        <!-- jquery ui js -->
+        <script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
+        <!-- bootstrap js -->
+        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- fraction slider js -->
+        <script src="assets/js/jquery.fractionslider.js" type="text/javascript"></script>
+        <!-- owl carousel js --> 
+        <script src="assets/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+        <!-- counter -->
+        <script src="assets/js/jquery.counterup.min.js" type="text/javascript"></script>
+        <script src="assets/js/waypoints.js" type="text/javascript"></script>
+        <!-- filter portfolio -->
+        <script src="assets/js/jquery.shuffle.min.js" type="text/javascript"></script>
+        <script src="assets/js/portfolio.js" type="text/javascript"></script>
+        <!-- magnific popup -->
+        <script src="assets/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+        <!-- range slider -->
+        <script src="assets/js/ion.rangeSlider.min.js" type="text/javascript"></script>
+        <script src="assets/js/jquery.easing.min.js" type="text/javascript"></script>
+        <!-- custom -->
+        <script src="assets/js/custom.js" type="text/javascript"></script>
+    </body>
+
+<!-- Mirrored from travel.bdtask.com/travel_demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Feb 2017 15:14:08 GMT -->
+
+<!-- Mirrored from SwipeCell.in/utility_all by HTTrack Website Copier/3.x [XR&CO'2010], Wed, 08 Mar 2017 08:40:31 GMT -->
+<!-- Added by HTTrack --><!-- /Added by HTTrack -->
+</html>       
+                  <div class="modal fade flight-details" tabindex="-1" role="dialog" >
+	<div class="modal-dialog modal-lg">
+    
+    <!--  border-radius: 0;
+    margin-left: 109px;
+    margin-right: 109px;
+    padding: 20px 2 -->
+		<div class="modal-content" style="border-radius:10px;" >
+			<div class="modal-body">
+				<div class="flight-details-header" >
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times"></i></span></button>
+					<h5>LATEST MOBILE PLAN FOR YOU</h5>
+                    <div class="load" id="fountainG" style="display:none;">
+	<div id="fountainG_1" class="fountainG"></div>
+	<div id="fountainG_2" class="fountainG"></div>
+	<div id="fountainG_3" class="fountainG"></div>
+	<div id="fountainG_4" class="fountainG"></div>
+	<div id="fountainG_5" class="fountainG"></div>
+	<div id="fountainG_6" class="fountainG"></div>
+	<div id="fountainG_7" class="fountainG"></div>
+	<div id="fountainG_8" class="fountainG"></div>
+</div>
+                  
+					<div class="flight-details-book">
+						
+						
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="flight-details-body">
+					  
+                       <div style="" class="plan" id="plan">
+                                
+                                
+                                
+                               
+                    
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+	   
+       <script src="js/mobile.js"></script>
+

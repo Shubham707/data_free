@@ -1,0 +1,901 @@
+        
+<!DOCTYPE HTML>
+<html>
+
+
+<!-- Mirrored from remtsoy.com/tf_templates/traveler/demo_v1_7/flights.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Sep 2016 16:51:49 GMT -->
+
+<!-- Mirrored from SwipeCell.in/user_agreement by HTTrack Website Copier/3.x [XR&CO'2010], Wed, 08 Mar 2017 08:44:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+<head>
+    <title>Indian Largest Travel and Utility Porvinding Portal </title>
+
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="Template, html, premium, themeforest" />
+    <meta name="description" content="Traveler - Premium template for travel companies">
+    <meta name="author" content="Tsoy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- GOOGLE FONTS -->
+   <!-- /GOOGLE FONTS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/styles-2.css">
+    <link rel="stylesheet" href="css/mystyles.css">
+        <link rel="stylesheet" href="css/book_form.css">
+
+    <script src="js/modernizr.js"></script>
+
+    <link rel="stylesheet" href="css/switcher.css" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/bright-turquoise.css" title="bright-turquoise" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/turkish-rose.css" title="turkish-rose" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/salem.css" title="salem" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/hippie-blue.css" title="hippie-blue" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/mandy.css" title="mandy" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/green-smoke.css" title="green-smoke" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/horizon.css" title="horizon" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/cerise.css" title="cerise" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/brick-red.css" title="brick-red" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/de-york.css" title="de-york" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/shamrock.css" title="shamrock" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/studio.css" title="studio" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/leather.css" title="leather" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/denim.css" title="denim" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="css/schemes/scarlet.css" title="scarlet" media="all" />
+</head>
+
+    <script src="js/google.js"></script>
+
+
+    
+
+    <script>
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#from").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#from").val(ui.item.value);
+						//$("#searchForm").submit();
+						//document.getElementById('from').innerHTML=+'badsddsf';
+					}
+			});
+		}
+	});
+	
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#to").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#to").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>
+<script type="text/javascript">		
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight_int.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight_int").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				
+				text ='<i class="fa fa-bed"></i>';
+				
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#from_location_international_flight").autocomplete({
+					source: myArr,
+					minLength: 2,
+					
+					select: function(event, ui) {
+						$("input#from_location_international_flight").val(ui.item.value)
+						
+						//$("input#from_location_international_flight").in
+						
+						document.getElementById('from_location_international_flight').innerHTML='<i class="fa fa-bed"></i>';
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "flight_int.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("flight_int").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#to_location_international_flight").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#to_location_international_flight").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+</script>
+
+<script>
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "INTL_City_details.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("CityName").each(function()
+			{
+				
+				//myArr.push($(this).attr("label"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#from_hotel_int").autocomplete({
+					source: myArr,
+					minLength: 2,
+					
+					select: function(event, ui) {
+						$("input#from_hotel_int").val(ui.item.value);
+						//$("#international_form").submit();
+					}
+			});
+		}
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "dom_hotel.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC_dom,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("domhotel").each(function()
+			{
+				
+				//myArr.push($(this).attr("label"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC_dom() {
+			$("input#from_hotel").autocomplete({
+					source: myArr,
+					minLength: 2,
+					
+					select: function(event, ui) {
+						$("input#from_hotel").val(ui.item.value);
+						//$("#international_form").submit();
+						
+						//var gif ='http://www.ticketshop-thueringen.de/Ticketshop-theme/images/dummy/loading_150.gif';
+						
+						
+                      //$("input#from_hotel").css( "background-image", "url(" +ui.item.gif + ")" );
+					}
+			});
+		}
+	});
+</script>
+
+<script>
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "bus_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("bus").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#bus_from").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#bus_from").val(ui.item.value);
+						//$("#searchForm").submit();
+						//document.getElementById('from').innerHTML=+'badsddsf';
+					}
+			});
+		}
+	});
+	
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "bus_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("bus").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#bus_to").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#bus_to").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>
+
+
+
+
+
+
+<script>
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_new_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("car").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#car_from").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#car_from").val(ui.item.value);
+						//$("#searchForm").submit();
+						//document.getElementById('from').innerHTML=+'badsddsf';
+					}
+			});
+		}
+	});
+	
+$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_new_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("car").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#car_to").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#car_to").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_cities.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("car").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#city_id").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#city_id").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "holiday_dom_city.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("dom_holiday").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC() {
+			$("input#domestic_holiday_city").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#domestic_holiday_city").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+	
+	
+	
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">		
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_cities.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC2,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("name").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC2() {
+			$("input#from_location_holiday").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#from_location_holiday").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>  
+
+<script type="text/javascript">		
+	
+	
+	$(document).ready(function() {
+		var myArr = [];
+	
+		$.ajax({
+			type: "GET",
+			url: "car_int_cities.xml", // change to full path of file on server
+			dataType: "xml",
+			success: parseXml,
+			complete: setupAC2,
+			failure: function(data) {
+				alert("XML File could not be found");
+				}
+		});
+	
+		function parseXml(xml)
+		{
+			//find every query value
+			$(xml).find("name").each(function()
+			{
+				
+				//myArr.push($(this).attr("country"));
+				myArr.push($(this).text());
+			});	
+		}
+		
+		function setupAC2() {
+			$("input#from_location_holiday_int").autocomplete({
+					source: myArr,
+					minLength: 1,
+					
+					select: function(event, ui) {
+						$("input#from_location_holiday_int").val(ui.item.value);
+						//$("#searchForm").submit();
+					}
+			});
+		}
+	});
+</script>    
+
+
+<body class="full" onload="price_low_to_high();setDefaultBody(); ">
+
+    <!-- FACEBOOK WIDGET -->
+    <div id="fb-root"></div>
+   
+    <!-- /FACEBOOK WIDGET -->
+    <div class="global-wrap">
+        
+         
+<header id="main-header">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a class="logo" href="index-2.html">
+                                <img src="images/logo.png" style="width:200px;
+    height: 45px;" alt="Travel Logo" title="Logo" />
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-md-offset-2">
+                            
+                        </div>
+                        <div class="col-md-9">
+                            <div class="top-user-area clearfix">
+                                <ul class="top-user-area-list list list-horizontal list-border">
+                                
+                                                                    
+                                   
+                                                                         <li>
+                                <a href="register.html" title="Sign in">Sign Up</a>                                    
+                        
+                                                </li>                                     
+                        
+                        <li>
+                            <a href="login.php" title="Agent Login">Sign In</a>
+                        </li>
+                        
+                         <li>
+                            <a target="_blank" href="login.php"Agent Login">Load Wallet</a>
+                        </li>
+                        <li class="nav-drop"><a href="#">My Account<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+                            <ul class="list nav-drop-menu">   
+                            
+                             
+                                                                   
+                                <li onclick="location.href='print_ticket'" style="cursor:pointer"><a   title="Print Flight Ticket"><i class="fa fa-plane">&nbsp;</i> Print Ticket</a></li>                                            
+                                <li onclick="location.href='cancel_ticket'" style="cursor:pointer"><a  title="Cancel Flight Ticket"><i class="fa fa-plane">&nbsp;</i> Cancel Ticket</a></li>                                                                                        
+                                <li onclick="location.href='print_bus_ticket'" style="cursor:pointer"><a  title="Print Bus Ticket"><i class="im im-bus">&nbsp;</i> Print Ticket</a></li>
+                                <li onclick="location.href='print_recharge'" style="cursor:pointer"><a   title="Print Recharge"><i class="fa fa-mobile">&nbsp;</i> Recharge Print</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </header>
+        <div class="container">
+        
+        <div class=""  ><img src="extra_img/agreement-banner.jpg" style="height:150px;"/></div>
+        </div>
+
+
+
+
+        
+        
+        <div class="container">
+            <div class="gap"></div>
+            <div class="row">
+                
+                
+                <div class="midd-main ">
+
+ </div>
+<div style="text-align:justify; margin-top:15px; line-height:20px;"><strong style="font-size:14px; margin-top:15x; ">Terms of Use </strong><br /><br />
+<strong style="font-size:13px">Agreement between User and SwipeCell.in</strong><br /><br />
+<p style="font-size:13px;text-align:justify;">User agreement of SwipeCell.in includes the terms and conditions of SwipeCell tours and holidays to provide services to the users having intension to purchase or inquiring for any products or services by the website or any other customer interface channels of SwipeCell.in. Any user taking services from SwipeCell.inhas to understand the each terms of this website and has to be agreed upon it. SwipeCell.inhas complete right to terminate the access to the website without any prior notice. The website can end any of its services or any portion of it, anytime and without notice. </p><br />
+<strong style="font-size:13px">Using the Services</strong><br /><br />
+<p style="font-size:13px; text-align:justify;">SwipeCell.inis no responsible for any transaction or rectification to which it is not concerned. Each user of this website guarantees to accept all the procedures and guidelines, which are modified regularly to use the services. Each user also warrants obeying all applicable laws and regulations, related to the use of the services. </p><br />
+<strong style="font-size:13px">User Agreement</strong><br /><br />
+<p style="font-size:13px; text-align:justify;">SwipeCell.inis not responsible for any kind of oversight, or twisting on the content of its pages or those of the linked websites. The advertisements being displayed on the website are valid for a period. Therefore, before making any use of services, find out the validity of the information provided on your own.</p> <br />
+<strong style="font-size:13px">Modification of the Terms of Use</strong><br /><br />
+<p style="font-size:13px;text-align:justify;">SwipeCell.inhas complete right to change its 'Terms & Conditions and Terms of Use', at any point of time, without any prior notice. We advise our users to review the terms and conditions of the website whenever they are going to avail any of its services. </p><br />
+<strong style="font-size:13px">Personal and Non-Commercial Use Limitation</strong><br /><br />
+<p style="font-size:13px; text-align:justify;">Information, images and others contents of SwipeCell.inare its personal property and provided to you for your personal and non - commercial use only. You are not supposed to copy, distribute, modify, publish, transfer, or sell any of these creative properties.</p> 
+
+</div>
+
+
+
+<div style="clear:both"></div>
+
+</div>
+                
+                
+                
+                
+            </div>
+            <div class="gap"></div>
+        </div>
+
+
+
+          
+ <footer id="main-footer">
+            <div class="container">
+                <div class="row row-wrap">
+                    <div class="col-md-3">
+                        <a class="logo" href="index-2.html">
+                            <img src="images/logo.png" style="width: 190px;
+    height: 45px;" alt="SwipeCell.in" title="SwipeCell.in" />
+                        </a>
+                       
+                        <ul class="list list-horizontal list-space">
+                            <li>
+                                <a target="_blank" class="fa fa-facebook box-icon-normal round animate-icon-bottom-to-top" href="https://www.facebook.com/suvogoalltrip"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" class="fa fa-twitter box-icon-normal round animate-icon-bottom-to-top" href="https://twitter.com/goalltrip_com"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" class="fa fa-google-plus box-icon-normal round animate-icon-bottom-to-top" href="https://twitter.com/goalltrip_com"></a>
+                            </li>
+                            <li>
+                                <a class="fa fa-linkedin box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" class="fa fa-youtube box-icon-normal round animate-icon-bottom-to-top" href="https://youtu.be/_nDfWXMJWdI"></a>
+                            </li>
+                        </ul>
+                        
+                       
+                        
+                        <p>Copyright@2014 Energic Softech Solutions Pvt.Ltd. All Rights Reserved</p>
+                        </div>
+                    
+                    <style>
+					
+					.list-footer > li{
+						
+						font-weight:bold;
+						font-size:12px;
+						
+					}
+					
+					
+					</style>
+                    <div class="col-md-2">
+                    <h4 style="color: #F60">SwipeCell Info</h4>
+
+                        <ul class="list list-footer">
+                           <li><a   href="about.html">About Us</a></li>
+                  <li><a  href="#">Board Of Directors</a></li>
+                
+                                    
+         <li><a  href="about-2.html">Our Team</a></li>
+             <li><a   href="contact.html">Contact us</a></li>
+                
+                        </ul>
+                    </div>
+                    
+                    
+                    
+
+                    <div class="col-md-2">
+                    <h4 style="color: #F60">Partner </h4>
+                        <ul class="list list-footer">
+                           <li><a  href="register.html">Become an Agent</a></li>
+  <li><a  href="franchise.html">Franchise</a></li>
+  			
+                <li><a   href="faq.html">Faq</a></li>
+             
+                        </ul>
+                    </div>
+                    
+                    
+                    <div class="col-md-2">
+                    <h4 style="color: #F60">Legal</h4>
+
+                        <ul class="list list-footer">
+                          <li><a   href="privacy.html">Privacy Policy</a></li>
+   <li><a   href="terms.html">Terms & Conditions</a></li>
+ <li><a   href="terms.html">Legal Data</a></li>
+ <li><a  href="user_agreement.html">User Agreement</a></li>
+			
+                            
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h4> Energic Softech Solutions Pvt. Ltd.
+                        </h4>554/555,Tower B-2,spaze I-Tech Park, Sohna Road, Sector 49, GURGAON, HR-122018
+                        <h4  style="color:#F60">+91 124-4002005 / 4002006</h4>
+                        <h4 style="color:#F60">info@SwipeCell.in</h4>
+                        <p style="font-weight:bold">24/7 Dedicated Customer Support</p>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+         <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/slimmenu.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/bootstrap-timepicker.js"></script>
+        <script src="js/nicescroll.js"></script>
+        <script src="js/dropit.js"></script>
+        <script src="js/ionrangeslider.js"></script>
+        <script src="js/icheck.js"></script>
+        <script src="js/fotorama.js"></script>
+        
+        
+        <script src="js/typeahead.js"></script>
+        <script src="js/card-payment.js"></script>
+        <script src="js/magnific.js"></script>
+        <script src="js/owl-carousel.js"></script>
+        <script src="js/fitvids.js"></script>
+        <script src="js/tweet.js"></script>
+        <script src="js/countdown.js"></script>
+        <script src="js/gridrotator.js"></script>
+        <script src="js/custom.js"></script>
+        
+        
+        <script src="js/switcher.js"></script>
+        
+         <script src="assets/js/jquery-ui.min.js"></script>
+
+        
+        
+         </div>
+</body>
+
+
+
+
+<!-- Mirrored from SwipeCell.in/user_agreement by HTTrack Website Copier/3.x [XR&CO'2010], Wed, 08 Mar 2017 08:44:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>

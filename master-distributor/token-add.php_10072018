@@ -1,0 +1,151 @@
+<?php
+session_start();
+if(!isset($_SESSION['mdistributor'])) {
+	header("location:login.php");
+	exit();
+}
+include("../config.php");
+$error = 0;
+$request_id = isset($_GET['uid']) ? mysql_real_escape_string($_GET['uid']) : 0;
+$user_info = $db->queryUniqueObject("SELECT * FROM apps_user WHERE uid='".$request_id."' ");
+if(!$user_info) {
+	echo "ERROR, Invalid User Detail";
+	exit();
+}
+?>
+<style>
+.box {
+	margin-bottom:0px;
+}
+.box .box-body {
+	margin-bottom:0px;
+}
+.box .box-title {
+	font-size:18px;
+}
+.bg-header {
+	background:#27ae61!important;
+	border-color:#27ae61!important;
+	color:#fff;
+}
+.form-body-inner {
+	padding-top:10px;
+}
+.form-body-inner .form-group {
+	border-bottom:1px solid #eee;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+.form-body-inner .form-group label {
+	font-weight:300;
+}
+.form-body-inner .input-sm {
+	padding:3px 8px;
+	height:24px;
+}
+.bg-error {
+	border:1px solid #FF0000;
+	background:#FFEAED;
+}
+</style>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery("#updateToken").bind('submit', function(e) {
+		e.preventDefault();
+		var new_token = jQuery("#new_token").val();
+		var action = jQuery("#action").val();
+		var pin = jQuery("#pin").val();
+		if(new_token == false || new_token=='') {
+			jQuery("#new_token").addClass("bg-error");
+			return false;
+		} else {
+			jQuery("#new_token").removeClass("bg-error");
+		}
+		 
+		if(action == false || action=='' ) {
+			jQuery("#action").addClass("bg-error");
+			return false;
+		} else {
+			jQuery("#action").removeClass("bg-error");
+		} 
+		
+		if(pin == false || pin=='') {
+			jQuery("#pin").addClass("bg-error");
+			return false;
+		} else {
+			jQuery("#pin").removeClass("bg-error");
+		}
+		
+		//jQuery.fancybox.showActivity();		
+		jQuery.ajax({
+			type : "POST",
+			cache : false,
+			url : 'token-process.php',
+			data : jQuery(this).serializeArray(),
+			success : function(data) {
+			  jQuery.fancybox(data, {
+					closeClick : false,
+					autoSize : true,
+					padding : 10,
+					helpers : { 
+						overlay : {closeClick: false}
+					},
+					'afterClose':function () {
+						window.location.reload();
+					}
+			  });
+			}
+		});
+		return false;
+	});
+});
+</script>
+<div class="box" style="width:480px;">
+	<div class="box-header bg-header">
+		<h3 class="box-title"><?php echo $user_info->company_name;?> <?php echo $request_id;?></h3>
+	</div>
+	<div class="box-body no-padding">
+		<div class="form-body-inner">
+			<form action="" method="post" id="updateToken" class="form-horizontal">
+			<input type="hidden" name="uid" value="<?php echo $user_info->uid;?>" class="form-control" />
+				<div class="form-group">
+					<label class="col-sm-4">Available Token</label>
+					<div class="col-sm-8">
+						<input type="text" name="activation_token" id="activation_token" value="<?php echo $user_info->activation_token;?>" readonly="" class="form-control input-sm" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4">Enter Token</label>
+					<div class="col-sm-8">
+						<input type="text" name="new_token" id="new_token" class="form-control input-sm" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4">Action</label>
+					<div class="col-sm-8">
+						<select name="action" id="action" class="form-control input-sm">
+							<option value="">Select Action</option>
+							<option value="1">ADD</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4">Pin</label>
+					<div class="col-sm-8">
+						<input type="text" name="pin" id="pin" class="form-control input-sm" />
+					</div>
+				</div>
+				<div class="form-group" style="padding-top:15px; padding-bottom:15px;">
+					<label class="col-sm-4">&nbsp;</label>
+					<div class="col-sm-8">
+						<button type="submit" name="submit" id="submit" class="btn btn-primary">
+							<i class="fa fa-save"></i> Submit
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
