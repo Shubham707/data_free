@@ -9,7 +9,7 @@ if(@$_REQUEST['filterData']=='bus')
 				echo '<ul class="booking-list">';
 				while ($data=mysqli_fetch_assoc($query)) {
 				echo '<li>
-				<a class="booking-item" href="#">
+				
 				<div class="row">
 					<div class="col-md-3">
 						<div class="booking-item-img-wrap">
@@ -43,11 +43,13 @@ if(@$_REQUEST['filterData']=='bus')
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-3"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span></span><span class="btn btn-primary">Book Now</span>
+					<div class="col-md-3">
+					<a class="booking-item" href="booking-online.php?book-id='.$data['bus_id'].'&bus=bus">
+					<span class="booking-item-price">&#8377;'.$data['price'].'</span><span></span><span class="btn btn-primary">Book Now</span></a>
 					</div>
 				</div>
-			</a>
-			</li>';
+			
+			</li><hr>';
 			}
 			echo "</ul>"; 
 			} else { echo "Data not found!"; }
@@ -58,7 +60,7 @@ if(@$_REQUEST['filterData']=='bus')
 				echo '<ul class="booking-list">';
 				while ($data=mysqli_fetch_assoc($query)) {
 				echo '<li>
-				<a class="booking-item" href="#">
+				
 				<div class="row">
 					<div class="col-md-3">
 						<div class="booking-item-img-wrap">
@@ -92,11 +94,11 @@ if(@$_REQUEST['filterData']=='bus')
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-3"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span></span><span class="btn btn-primary">Book Now</span>
+					<div class="col-md-3">
+					<a class="booking-item" href="#"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span></span><span class="btn btn-primary">Book Now</span></a>
 					</div>
 				</div>
-			</a>
-			</li>';
+			</li><hr>';
 			}
 			echo "</ul>"; 
 			} else { echo "Data not found!"; }
@@ -108,7 +110,6 @@ if(@$_REQUEST['filterData']=='bus')
 					echo '<ul class="booking-list">';
 					while ($data=mysqli_fetch_assoc($query)) {
 					echo '<li>
-				<a class="booking-item" href="#">
 					<div class="row">
 						<div class="col-md-3">
 							<div class="booking-item-img-wrap">
@@ -142,11 +143,11 @@ if(@$_REQUEST['filterData']=='bus')
 								</li>
 							</ul>
 						</div>
-						<div class="col-md-3"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span></span><span class="btn btn-primary">Book Now</span>
+						<div class="col-md-3">
+						<a class="booking-item" href="#"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span></span><span class="btn btn-primary">Book Now</span></a>
 						</div>
 					</div>
-				</a>
-				</li>';
+				</li><hr>';
 				}
 				echo "</ul>";
 				} else{ echo "Data not found!"; }
@@ -157,7 +158,6 @@ if(@$_REQUEST['filterData']=='bus')
 				echo '<ul class="booking-list">';
 				while ($data=mysqli_fetch_assoc($query)) {
 				echo '<li>
-			<a class="booking-item" href="#">
 				<div class="row">
 					<div class="col-md-3">
 						<div class="booking-item-img-wrap">
@@ -191,11 +191,11 @@ if(@$_REQUEST['filterData']=='bus')
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-3"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span>/night</span><span class="btn btn-primary">Book Now</span>
+					<div class="col-md-3">
+					<a class="booking-item" href="#"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span>/night</span><span class="btn btn-primary">Book Now</span></a>
 					</div>
 				</div>
-			</a>
-			</li>';
+			</li><hr>';
 			}
 			echo "</ul>";
 			} else { echo "Data not found!"; }
@@ -207,7 +207,6 @@ if(@$_REQUEST['filterData']=='bus')
 				echo '<ul class="booking-list">';
 				while ($data=mysqli_fetch_assoc($query)) {
 				echo '<li>
-			<a class="booking-item" href="#">
 				<div class="row">
 					<div class="col-md-3">
 						<div class="booking-item-img-wrap">
@@ -241,11 +240,12 @@ if(@$_REQUEST['filterData']=='bus')
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-3"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span>/night</span><span class="btn btn-primary">Book Now</span>
+					<div class="col-md-3">
+			<a class="booking-item" href="#"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span>/night</span><span class="btn btn-primary">Book Now</span></a>
 					</div>
 				</div>
 			</a>
-			</li>';
+			</li><hr>';
 			}
 			echo "</ul>";
 	}else{	
@@ -259,7 +259,6 @@ if(@$_REQUEST['filterData']=='bus')
 				echo '<ul class="booking-list">';
 				while ($data=mysqli_fetch_assoc($query)) {
 				echo '<li>
-			<a class="booking-item" href="#">
 				<div class="row">
 					<div class="col-md-3">
 						<div class="booking-item-img-wrap">
@@ -293,11 +292,13 @@ if(@$_REQUEST['filterData']=='bus')
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-3"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span>/night</span><span class="btn btn-primary">Book Now</span>
+					<div class="col-md-3">
+			<a class="booking-item" href="#">
+			<span class="booking-item-price">&#8377;'.$data['price'].'</span><span>/night</span><span class="btn btn-primary">Book Now</span></a>
 					</div>
 				</div>
 			</a>
-			</li>';
+			</li><hr>';
 			}
 			echo "</ul>";
 	}else{	
@@ -311,7 +312,6 @@ if(@$_REQUEST['filterData']==2)
 				echo '<ul class="booking-list">';
 				while ($data=mysqli_fetch_assoc($query)) {
 				echo '<li>
-			<a class="booking-item" href="#">
 				<div class="row">
 					<div class="col-md-3">
 						<div class="booking-item-img-wrap">
@@ -345,11 +345,12 @@ if(@$_REQUEST['filterData']==2)
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-3"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span>/night</span><span class="btn btn-primary">Book Now</span>
+					<div class="col-md-3">
+			<a class="booking-item" href="#"><span class="booking-item-price">&#8377;'.$data['price'].'</span><span>/night</span><span class="btn btn-primary">Book Now</span></a>
 					</div>
 				</div>
 			</a>
-			</li>';
+			</li><hr>';
 			}
 			echo "</ul>";
 }

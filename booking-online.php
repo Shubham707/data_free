@@ -1,14 +1,23 @@
-<?php 
+<?php
 include'inner-header.php';
-$sql="select * from book_list where status=1";
+if($_REQUEST['book-id']){
+$id=$_REQUEST['book-id'];
+$sql="select * from bus_list where bus_id='$id'";
 $query=mysqli_query($db,$sql) or die('database not coneect');
+$list=mysqli_fetch_assoc($query);
+}
+else{
+	header("Location:booking-ticket.php");
+}
 ?>
-
+<style>
+	#starRating li{ list-style: none; float: left; margin-left: 5px;}
+</style>
 				<div class="booking-item-details">
 					<header class="booking-item-header">
 						<div class="row">
 							<div class="col-md-9">
-								<h2 class="lh1em">So My Resort</h2>
+								<h2 class="lh1em">Booking System</h2>
 								<p class="lh1em text-small"><i class="fa fa-map-marker"></i> 6782 Sarasea Circle, Siesta Key, FL 34242</p>
 								<ul class="list list-inline text-small">
 									<li><a href="#"><i class="fa fa-envelope"></i>  info@wintrip.in</a>
@@ -19,7 +28,7 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 								</ul>
 							</div>
 							<div class="col-md-3">
-								<p class="booking-item-header-price"><span class="text-lg">0</span>Base Fare</p>
+								<p class="booking-item-header-price"><span class="text-lg">&#x20B9;<?= $list['price'];?></span>Base Fare</p>
 							</div>
 						</div>
 					</header>
@@ -29,10 +38,7 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 								<ul class="nav nav-tabs" id="myTab">
 									<li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-camera"></i>Photos</a>
 									</li>
-									<li><a href="#inclusion" data-toggle="tab"><i class="fa fa-map-marker"></i>Include</a>
-									</li>
-									<li><a href="#exclusions" data-toggle="tab"><i class="fa fa-map-marker"></i>Exclude</a>
-									</li>
+									
 									<li><a href="#terms" data-toggle="tab"><i class="fa fa-map-marker"></i>Terms</a>
 									</li>
 									<li><a href="#tab-3" data-toggle="tab"><i class="fa fa-info-circle"></i>About</a>
@@ -46,14 +52,12 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 									<div class="tab-pane fade in active" id="tab-1">
 										<div class="tab-pane fade in active" id="tab-1">
 											<div class="fotorama" data-allowfullscreen="true" data-nav="thumbs" style="height:350px" width="500px">
-												<img src="https://www.goalltrip.com/403.php" alt="Tour" title="Holidaays" />
+												<img src="uploads_list/<?= $list['images'];?>" tag="" height="500" width="500">
 											</div>
 										</div>
 										<!-- START LIGHTBOX GALLERY -->
 										<!-- END LIGHTBOX GALLERY -->
 									</div>
-									<div class="tab-pane fade" id="inclusion">Airport/Railway (Thivim/Karmali) Station transfers by non AC coach Non Alcoholic Welcome drink on arrival Complimentary one bottles of mineral water on a day of arrival Well appointed air conditioned rooms with TV, Electronic, Mini Bar Buffet Breakfast & Dinner. One Full day South Goa Sightseeing followed by boat cruise by non AC coach Complimentary one Mineral Water bottle per room per day Use of swimming pool and other hotel services All currently applicable hotel taxes.</div>
-									<div class="tab-pane fade" id="exclusions">Any Air or train fare. Monument fee / Camera fee. Kind of Personal Expenses or Optional Tours/Meals other than specified. Cost does not include any other thing apart from the inclusions. Medical Travel insurance. Surcharges applicable during Festival, Peak Season & Special Events. Any changes in the taxes levied by Govt.</div>
 									<div class="tab-pane fade" id="terms">
 										<h5 style="font-weight:bold">Terms & Condition</h5>
 										Price mentioned is for a person basis. Bookings are applicable on twin-sharing basis. Bookings are subject to availability with the hotel. Cost does not include any other thing apart from the itinerary inclusions. Any other services that is not included in the above quoted section. Government Service Tax extra 3.09% (as applicable). Rates of the Luxury segment are not applicable between 20th Dec until 5th Jan and for the long weekends Package rates are subject to change without any prior notice. Goalltrip.com will provide alternate or similar category of hotel in case the hotel mentioned in program is not available. All cancellations & amendments will be done as per hotel policy. The guest must carry photo identification like Passport/Driving License/Voter ID Card IN ORIGINAL at the point of check in at the hotel. Goalltrip.com reserves the right to change/modify or terminate the offer any time at its own discretion and without any prior notice. A Surcharge may be levied by the hotel during National Holidays/Festive period/Extended Weekends, New year etc. Above rates may go higher during long weekends and on black out dates and it will not applicable during festival period(national or local holidays) Goalltrip.com is not responsible for any inconvenience cause due to any political issue or natural calamity etc.
@@ -65,7 +69,7 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 											<div class="row">
 												<div class="col-md-12">
 													<h5 style="font-weight:bold">Description</h5>
-													<p>The world famous holiday destination, Goa welcomes its visitors with vivacious locals, sparkling waters, white sands, lip-smacking Goan dishes and happening nightclubs. Goa is divided into two districts namely North Goa and South Goa, with Panaji as its administrative capital. While North Goa is an instant hit among party lovers with its pulsating nightlife, lively beaches and hippie markets, South Goa is the ultimate place for peace seekers with its clean beaches, fewer activities and less crowd. If you're looking for accommodation in North Goa area, then So My Resort is the perfect place to enjoy a peaceful stay. Located on the Calangute-Candolim main road, So My Resort is just 500 m away from North Goas famous Calangute Beach. It enjoys close proximity to Baga Beach, Candolim beach, Sinquerim Beach, flea markets and casinos as well. Surrounded by swaying coconut trees and old Goan houses, the resort is well-connected to Dabolim Airport (42 km), Thivim Railway Station (18 km) and Mapusa Bus Terminus (8 km).</p>
+													<p><?= $list['book_description']?></p>
 												</div>
 											</div>
 										</div>
@@ -112,6 +116,7 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 															<div class="booking-item-raiting-list-number">8</div>
 														</li>
 													</ul>
+
 												</div>
 												<div class="col-md-4">
 													<h4 class="lhem">Summary</h4>
@@ -194,18 +199,24 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 													</ul>
 												</div>
 											</div>
-										</div><a class="btn btn-primary" href="#">Write a Review</a>
+											<div class='col-lg-12 cell'>
+											    <a class="btn btn-primary enquiry-button" href="#">Write a Review</a>
+											</div>
+											
+
+										</div>
+										
 									</div>
 									<div class="tab-pane fade" id="tab-5">
 										<div class="mt20">
 											<ul class="booking-list">
-												<?php while($list=mysqli_fetch_assoc($query)){?>
+												
 												<li>
 													<a class="booking-item" href="#">
 														<div class="row">
 															<div class="col-md-3">
 																<div class="booking-item-img-wrap">
-																	<img src="booking/uploads_list/<?= $list['images'];?>" alt="Image Alternative text" title="hotel PORTO BAY RIO INTERNACIONAL de luxe" />
+																	<img src="uploads_list/<?= $list['images'];?>" alt="Image Alternative text" title="hotel PORTO BAY RIO INTERNACIONAL de luxe" />
 																	<div class="booking-item-img-num"><i class="fa fa-picture-o"></i>19</div>
 																</div>
 															</div>
@@ -226,22 +237,15 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 																</div>
 																<h5 class="booking-item-title"><?= $list['address'];?></h5>
 																<p class="booking-item-address"><i class="fa fa-map-marker"></i> <?= $list['country'];?>,<?= $list['state'];?>(Times Square)</p>
-																<ul class="booking-item-features booking-item-features-rentals booking-item-features-sign">
-																	<li rel="tooltip" data-placement="top" title="Sleeps"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 4</span>
-																	</li>
-																	<li rel="tooltip" data-placement="top" title="Bedrooms"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 3</span>
-																	</li>
-																	<li rel="tooltip" data-placement="top" title="Bathrooms"><i class="im im-shower"></i><span class="booking-item-feature-sign">x 1</span>
-																	</li>
-																</ul>
+																<ul id="starRating" data-stars="5"></ul>
 															</div>
-															<div class="col-md-3"><span class="booking-item-price">$<?= $list['price'];?></span>(<?= $list['days'];?>)<span>Days/Night</span>
-																<button onclick="funcBook('<?= $list['book_id'];?>');" class="btn btn-primary">Book Now</button>
+															<div class="col-md-3"><span class="booking-item-price">&#x20B9;<?= $list['price'];?></span>(<?= $list['days'];?>)<span>Days/Night</span>
+																
 															</div>
 														</div>
 													</a>
 												</li>
-												<?php }?>
+												
 											</ul>
 										</div>
 									</div>
@@ -250,27 +254,8 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 						</div>
 						<div class="col-md-4">
 							<div class="booking-item-meta">
-								<h2 class="lh1em mt40" id="price">INR0</h2>
-								<input type="hidden" name="price" value="0" id="" />
-								<input type="hidden" name="total" value="" id="price" />
-								<input type="hidden" name="pck_id" value="321" id="" />
-								<input type="hidden" name="pack_name" value="So My Resort" id="" />
-								<div class="booking-item-rating">
-									<ul class="icon-list icon-group booking-item-rating-stars">
-										<li><i class="fa fa-star"></i>
-										</li>
-										<li><i class="fa fa-star"></i>
-										</li>
-										<li><i class="fa fa-star"></i>
-										</li>
-										<li><i class="fa fa-star"></i>
-										</li>
-										<li><i class="fa fa-star"></i>
-										</li>
-									</ul><span class="booking-item-rating-number"><b >4.7</b> of 5 <small class="text-smaller">guest rating</small></span>
-									<p><a class="text-default" href="#">based on 1535 reviews</a>
-									</p>
-								</div>
+								<h2 class="lh1em mt40" id="price"></h2>
+								
 							</div>
 							<div class="booking-item-dates-change">
 								<div class="input-daterange" data-date-format="MM d, DD"></div>
@@ -279,7 +264,7 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 										<div class="form-group form-group- form-group-select-plus">
 											<label>Extra Adults</label>
 											<div class="btn-group-select-num" data-toggle="buttons">
-												<select class="form-control adult" name="extra_adult">
+												<select class="form-control adult" name="extra_adult" onchange="adultcount(this.value);">
 													<option value="2">2</option>
 													<option value="3">3</option>
 													<option value="4">4</option>
@@ -293,7 +278,7 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 										<div class="form-group form-group-select-plus">
 											<label>Extra Children</label>
 											<div class=" btn-group-select-num" data-toggle="buttons">
-												<select class="form-control child" name="extra_child">
+												<select class="form-control child" name="extra_child" onchange="adultcount(this.value);">
 													<option value="0">0</option>
 													<option value="1">1</option>
 													<option value="2">2</option>
@@ -307,14 +292,33 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 								</div>
 							</div>
 							<div class="gap gap-small"></div>
-							<button type="submit" class="btn btn-primary btn-lg">Book Now</button>
+							<button type="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">Book Now</button>
 						</div>
 					</div>
 				</div>
 				<div class="gap"></div>
 			</div>
-		</form>
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Ticket Booking</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <?php include'ticket/book.php'?>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 		<?php include'inner-footer.php';?>
+<script src="js/bootstrap.js"></script>
 <script type="text/javascript">
 	
 	function funcBook(id)
@@ -322,4 +326,58 @@ $query=mysqli_query($db,$sql) or die('database not coneect');
 		
 		window.location.href="resort-book.php?book-id="+id;
 	}
+	function adultcount(evt)
+	{
+
+		var adult=$('.adult').val();
+		var child=$('.child').val();
+		if(adult && child)
+		{
+			$('#adultpass').val(adult);
+			$('#childpass').val(child);
+		}
+	}
+</script>
+<script>
+
+$(".enquiry-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var cell = $(this).closest('.cell');
+    if (cell.find('.enquiry-form').length) {
+        cell.find('.enquiry-form').slideToggle();
+    } else {
+        cell.append(
+            "<form id='sendReview' method='post'><div class='row'><div class='col-md-8'>" +
+            "<div class='md-form mb-0'>" +
+            "Your Name: <input type='text'  name='username' class='form-control'></div></div>" +
+            "<br><div class='col-md-8'>" +
+            "<div class='md-form mb-0'>" +
+            " <br>Title: <input type='text'  name='title' class='form-control'></div></div>" +
+            "<div class='col-md-8'>" +
+            "<div class='md-form mb-0'>" +
+            "Optional Comment:<textarea type='text'  name='comment' class='form-control'></textarea></div></div>" +
+            "<div class='col-md-8'><br><div class='md-form mb-0'><input class='btn btn-info setup' type='submit' id='send' value='Review'></form>" +
+            "</div></div>");
+        cell.find('.enquiry-form').hide().slideDown("slow");
+    }
+});
+$(document).ready(function(){
+$("#send").click(function(){
+var username = $("#username").val();
+var title = $("#title").val();
+var comment = $("#comment").val();
+var dataString = 'username='+ username + '&title='+ title + '&comment='+ comment;
+alert(dataString);
+});
+});
+
+
+jQuery(function( $ ) {
+    $('#starRating').starRating({
+		 callback: function (value) {
+			 alert('You Just Clicked: '+value);
+            }})
+});
+
 </script>
