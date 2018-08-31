@@ -1,5 +1,5 @@
 <?php include'booking/config.php';
-$sql="select * from tour_list inner join countries on countries.id=tour_list.country inner join states on states.id=tour_list.state ORDER BY tour_id DESC limit 4";
+$sql="select * from tour_list inner join countries on countries.id=tour_list.country inner join states on states.id=tour_list.state where popular=1 ORDER BY tour_id ASC limit 4";
 $query=mysqli_query($db,$sql) or die(mysqli_error());
 ?>
 <!DOCTYPE html>
@@ -769,226 +769,39 @@ $query=mysqli_query($db,$sql) or die(mysqli_error());
 					</div>
 				</div>
 				<div class="row">
+					<?php 
+					$sqli="select * from tour_list inner join countries on countries.id=tour_list.country inner join states on states.id=tour_list.state ORDER BY tour_id DESC limit 8";
+                      $Query=mysqli_query($db,$sqli) or die(mysqli_error());
+                      while($value=mysqli_fetch_assoc($Query)){
+                      ?>
 					<div class="col-xs-12 col-sm-4 col-md-3">
 						<div class="package-wiget">
 							<div class="grid">
 								<figure class="effect-milo">
-									<img src="assets/images/Package-800x500-1.jpg" class="img-responsive" alt="">
+									<img src="uploads_list/<?php echo $value['images'];?>" class="img-responsive" alt="">
 									<figcaption>
 										<div class="effect-block">
-											<h3>Hilton Molino Stucky</h3>
+											<h3></h3>
 											<div class="package-ratting"> <i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star-half-o"></i>
 												<i class="fa fa-star-o"></i>
 											</div>
-											<button type="button" class="thm-btn">Explore Now</button>
+											<button onclick="searchFunction('<?php echo str_replace(' ','-',$value['tour_name'])?>');" type="button" class="thm-btn">Explore Now</button>
 										</div>
 									</figcaption>
 								</figure>
 							</div>
 							<div class="package-content">
-								<h5>Hilton Molino Stucky</h5>
+								<h5><?php echo $value['tour_name']?></h5>
 								<div class="package-price">from <span class="price">
-                                            <span class="amount">INR2000 Offer </span>
+                                            <span class="amount">INR<?php echo $value['tour_plan']?> Offer </span>
 									</span>/night</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-4 col-md-3">
-						<div class="package-wiget">
-							<div class="grid">
-								<figure class="effect-milo">
-									<img src="assets/images/Package-800x500-2.jpg" class="img-responsive" alt="">
-									<figcaption>
-										<div class="effect-block">
-											<h3>Palolem, India</h3>
-											<div class="package-ratting"> <i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-half-o"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<button type="button" class="thm-btn">Explore Now</button>
-										</div>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="package-content">
-								<h5>Palolem, India</h5>
-								<div class="package-price">from <span class="price">
-                                            <span class="amount">INR1500 Offer </span>
-									</span>/night</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-4 col-md-3">
-						<div class="package-wiget">
-							<div class="grid">
-								<figure class="effect-milo">
-									<div class="ribbon"><span>Popular</span>
-									</div>
-									<img src="assets/images/Package-800x500-3.jpg" class="img-responsive" alt="">
-									<figcaption>
-										<div class="effect-block">
-											<h3>IEiffel Tower, Paris</h3>
-											<div class="package-ratting"> <i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-half-o"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<button type="button" class="thm-btn">Explore Now</button>
-										</div>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="package-content">
-								<h5>IEiffel Tower, Paris</h5>
-								<div class="package-price">from <span class="price">
-                                            <span class="amount">INR2900 Offer </span>
-									</span>/night</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-4 col-md-3">
-						<div class="package-wiget">
-							<div class="grid">
-								<figure class="effect-milo">
-									<img src="assets/images/Package-800x500-4.jpg" class="img-responsive" alt="">
-									<figcaption>
-										<div class="effect-block">
-											<h3>Canals of Venice, Italy</h3>
-											<div class="package-ratting"> <i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-half-o"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<button type="button" class="thm-btn">Explore Now</button>
-										</div>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="package-content">
-								<h5>Canals of Venice, Italy</h5>
-								<div class="package-price">from <span class="price">
-                                            <span class="amount">INR1890 Offer </span>
-									</span>/night</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-4 col-md-3">
-						<div class="package-wiget">
-							<div class="grid">
-								<figure class="effect-milo">
-									<img src="assets/images/Package-800x500-5.jpg" class="img-responsive" alt="">
-									<figcaption>
-										<div class="effect-block">
-											<h3>Itali, Pisa</h3>
-											<div class="package-ratting"> <i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-half-o"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<button type="button" class="thm-btn">Explore Now</button>
-										</div>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="package-content">
-								<h5>Itali, Pisa</h5>
-								<div class="package-price">from <span class="price">
-                                            <span class="amount">INR1390 Offer </span>
-									</span>/night</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-4 col-md-3">
-						<div class="package-wiget">
-							<div class="grid">
-								<figure class="effect-milo">
-									<div class="ribbon"><span>New</span>
-									</div>
-									<img src="assets/images/Package-800x500-6.jpg" class="img-responsive" alt="">
-									<figcaption>
-										<div class="effect-block">
-											<h3>St Paul's Cathedral, London</h3>
-											<div class="package-ratting"> <i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-half-o"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<button type="button" class="thm-btn">Explore Now</button>
-										</div>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="package-content">
-								<h5>St Paul's Cathedral, London</h5>
-								<div class="package-price">from <span class="price">
-                                            <span class="amount">INR1800 Offer </span>
-									</span>/night</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-4 col-md-3 hidden-sm">
-						<div class="package-wiget">
-							<div class="grid">
-								<figure class="effect-milo">
-									<img src="assets/images/Package-800x500-7.jpg" class="img-responsive" alt="">
-									<figcaption>
-										<div class="effect-block">
-											<h3>Castel Sant'Angelo. Rome</h3>
-											<div class="package-ratting"> <i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-half-o"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<button type="button" class="thm-btn">Explore Now</button>
-										</div>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="package-content">
-								<h5>Castel Sant'Angelo. Rome</h5>
-								<div class="package-price">from <span class="price">
-                                            <span class="amount">INR1700 Offer </span>
-									</span>/night</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-4 col-md-3 hidden-sm">
-						<div class="package-wiget">
-							<div class="grid">
-								<figure class="effect-milo">
-									<img src="assets/images/Package-800x500-8.jpg" class="img-responsive" alt="">
-									<figcaption>
-										<div class="effect-block">
-											<h3>Giza Necropolis, Egypt</h3>
-											<div class="package-ratting"> <i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-half-o"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<button type="button" class="thm-btn">Explore Now</button>
-										</div>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="package-content">
-								<h5>Giza Necropolis, Egypt</h5>
-								<div class="package-price">from <span class="price">
-                                            <span class="amount">INR2000 Offer </span>
-									</span>/night</div>
-							</div>
-						</div>
-					</div>
+					<?php } ?>
 				</div>
 			</div>
 		</section>
@@ -1216,12 +1029,13 @@ $query=mysqli_query($db,$sql) or die(mysqli_error());
 		  $("#policy_id_data").validate(); 
 	</script>
 	
-	
-<!--   <script src="js/mobile.js"></script> -->
+	<script type="text/javascript">
+		function searchFunction(evt)
+		{
+			window.location.href="all-detail.php?tour-name="+evt;
+		}
+	</script>
 </body>
-<!-- Mirrored from travel.bdtask.com/travel_demo/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Feb 2017 15:14:08 GMT -->
-<!-- Mirrored from SwipeCell.in/utility_all by HTTrack Website Copier/3.x [XR&CO'2010], Wed, 08 Mar 2017 08:40:31 GMT -->
-<!-- Added by HTTrack -->
-<!-- /Added by HTTrack -->
+
 
 </html>

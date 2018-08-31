@@ -41,6 +41,7 @@ include'header.php';?>
                       <th>Country</th>
                       <th>State</th>
                       <th>City</th>
+                      <th>Popular</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
@@ -64,7 +65,11 @@ include'header.php';?>
                       <td><?php echo $data['country_name'];?></td>
                       <td><?php echo $data['state_name'];?></td>
                       <td><?php echo $data['city'];?></td>
-                      <td><?php if($data['status']==1){?>
+                      <td><?php if($data['popular']==0){?>
+                      <button onclick="popularfunc('<?= $data['tour_id']?>');" class="btn btn-danger fas fa-times"></button><?php } else { ?>
+                         <button onclick="popularsfunc('<?= $data['tour_id']?>');" class="btn btn-success fas fa-check"></button>
+                      <?php }?></td>
+                      <td><?php if($data['status']==1){ ?>
                         <button onclick="inactivefunc('<?= $data['tour_id']?>');" class="btn btn-success">Active</button>
                          <?php } else{ ?>
                         <button onclick="activefunc('<?= $data['tour_id']?>');" class="btn btn-danger">Inactive</button>
@@ -93,5 +98,13 @@ include'header.php';?>
   function activefunc(id)
   {
     window.location.href='lib/package.php?active='+id;
+  }
+  function popularfunc(id)
+  {
+    window.location.href='lib/package.php?popular='+id;
+  }
+   function popularsfunc(id)
+  {
+    window.location.href='lib/package.php?populars='+id;
   }
 </script>

@@ -110,6 +110,11 @@
             <i class="fas fa fa-users"></i>
             <span>User List</span></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="banner.php">
+            <i class="far fa-image"></i>
+            <span>Banner List</span></a>
+        </li>
         
         <li class="nav-item">
         	<a class="nav-link" href="#">

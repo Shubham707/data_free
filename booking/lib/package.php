@@ -52,3 +52,17 @@ if(@$_REQUEST['update'])
 	$query=mysqli_query($db,$sql) or die('Query Not execute!');
 	header("Location:../tour-list.php");
 }
+if(@$_REQUEST['popular'])
+{
+	 $active=$_REQUEST['popular'];
+	 $sql="UPDATE `tour_list` SET `popular` = '1' WHERE `tour_id`='$active'";
+	 $query=mysqli_query($db,$sql) or die(mysqli_error());
+	 header("location:".$_SERVER['HTTP_REFERER']);
+}
+if(@$_REQUEST['populars'])
+{
+	 $active=$_REQUEST['populars'];
+	 $sql="UPDATE `tour_list` SET `popular` = '0' WHERE `tour_id`='$active'";
+	 $query=mysqli_query($db,$sql) or die(mysqli_error());
+	 header("location:".$_SERVER['HTTP_REFERER']);
+}
